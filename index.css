@@ -76,6 +76,9 @@ header {
 .cards {
     max-width: 800px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
 }
 .card-container img {
     width: 100%;
@@ -86,5 +89,16 @@ header {
 }
 .card-content,
 .card-info {
-    padding:32px
+    padding:24px
+}
+.card-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.card-price {
+    background-color: var(--color-purple);
+    filter: brightness(90%);
+    padding: 5px 20px;
+    border-radius: 20px;
+    text-align: center;
 }
