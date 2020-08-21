@@ -11,7 +11,8 @@ server.use(express.static('public'))
 server.set("view engine", "njk")
 
 nunjucks.configure('views', {
-    express: server
+    express: server,
+    noCache: true
 })
 
 server.get("/", function (req, res) {
@@ -30,6 +31,20 @@ server.get("/", function (req, res) {
 })
 server.get("/portifolio", function (req, res) {
     return res.render("portifolio", { items: videos })
+})
+
+server.get("/video", function (req, res) {
+    const id = req.query.id
+
+    const video = videos.find(function (video) {
+        video.id === id
+    })
+
+    if (!video) {
+        return res.send('video not found')
+    }
+
+    return res.render("video", {item: video})
 })
 
 server.listen(5000, function () {
